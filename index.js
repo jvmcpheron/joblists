@@ -5,33 +5,57 @@ fetch("data.json")
 .then(function(datas){
     let placeholder = document.querySelector('#data-ouput');
     let out = "";
+    
     for (let data of datas){
+        var isnew = "";
+        var isfeatured = "";
+        if (data.new==true){
+            isnew = "NEW!";
+        }else{
+            isnew = "";
+        }
+        if(data.featured==true){
+            isfeatured="FEATURED"
+        }
+
         out += `
-        <div class="container border m-3">
-        <div class="row">
-            Company
-            New
-            Feat
-        </div>
-        <div class="row">
-            <div class="col">
-                <h3>${data.position}</h3>
-                <p>When Posted
-                Job type
-                Locaion </p>
+        <div class="container shadow m-3 ml-5 mr-5 p-3 rounded">
+            <div class="row">
+                <div class="col-2 d-flex align-content-center">
+                    <img src="${data.logo}" class="logo-style rounded-circle" >
+                </div>
+                <div class="col ">
+                    <div class="row d-flex flex-row">
+                        <p class="wfit">${data.company}</p>
+                        <p class="wfit">${isnew}</p>
+                        <p class="wfit">${isfeatured}</p>
+                    </div>
+                    <div class="row">
+                        <h3>${data.position}</h3>
+                        <p>${data.postedAt}
+                        ${data.contract}
+                        ${data.location} </p>
+                    </div>
+                </div>      
+                <div class="col d-flex align-items-center justify-content-end pr-6">
+                 
+                    <div class ="row">
+                        <!-- Role -->
+                        ${data.role}
+                        <!-- Level -->
+                        ${data.level}
+                        <!-- Languages -->
+                        ${data.languages.toString()} 
+                        <!-- Item End -->
+                    </div>
+
+        
+                </div>
+
+          
+
+
             </div>
-            <div class="col">
-                <!-- Role -->
-                Role
-                <!-- Level -->
-                Level
-                <!-- Languages -->
-                Skills
-                Skills
-                Skills
-                <!-- Item End -->
-            </div>
-        </div>
         </div>
         `;
     }

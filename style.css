@@ -1,0 +1,17 @@
+.col2{
+    width:140px !important;
+}
+.col1{
+    width: 80px;
+}
+
+.logo-style{
+    width: 100%;
+}
+.pr-6{
+    padding-right: 10%;
+}
+
+.wfit{
+    width: fit-content !important;
+}
